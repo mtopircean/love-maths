@@ -43,7 +43,11 @@ function runGame(gameType){
     // checks which gametype you are running and call appropriate function to display the question
     if (gameType === "addition") {
         displayAdditionQuestion(num1, num2)
+        
+        //you add an else if in order to add the remaining loops or operations
+    }else if (gameType === "multiply"){
         //alerts the user if the gametype is unknown
+        displayMultiplyQuestion(num1, num2)
     }else{
         alert('Unknown game type:&{gameType}');
         //throw statement will stop the console from running and will send a message to the console
@@ -92,7 +96,11 @@ function calculateCorrectAnswer(){
     // addition here will continue to run the same game until user decides to stop
     if (operator === "+"){
         return[operand1 + operand2, "addition"];
-    }else{
+        //when you do the else if you always add the operand, the condition basically
+    }else if (operand === "x"){
+        return[operand1 * operand2, "multiply"];
+    }
+        else{
         alert('Unimplemented operator ${operator}');
         throw 'Unimplemented operator ${operator}. Aborting!';
     }
@@ -126,11 +134,13 @@ document.getElementById('operator').textContent= "+";
 }
 
 function displaySubtractQuestion(){
-
     
 }
 
 function displayMultiplyQuestion(){
 
+    document.getElementById('operand1').textContent= operand1;
+    document.getElementById('operand2').textContent= operand2;
+    document.getElementById('operator').textContent= "x";
     
 }
