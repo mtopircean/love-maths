@@ -63,8 +63,12 @@ function checkAnswer(){
 //if bellow sets automatically the if TRUE enviorement
     if (isCorrect) {
         alert" Hey! You got this right! :D");
+        //added the increment function so it updates the results
+        incrementScore();
     }else{
         alert('Awww.... you answered${userAnswer}. The correct answer was ${calculatedAnswer[0]}!');
+         //added the increment function so it updates the results
+        incrementWrongAnswer();
     }
 
     runGame(calculatedAnswer[1]);
@@ -95,13 +99,23 @@ function calculateCorrectAnswer(){
     }
 
 }
+/**
+ * Gets the current score from the DOM and increments it by 1
+ */
 
 function incrementScore(){
-
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    //bellow sets the innerText, new score
+    // innerText and text content are interchangeable
+    //puteai sa folosesti oldscore + 1
+    document.getElementById("score").innerText= ++oldScorel
 }
-
+/**
+ * Gets the current tally from the DOM and increments it by 1
+ */
 function incrementWrongAnswer(){
-
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText= ++oldScorel
 }
 //operand 1 and 2 are the 2 are the 2 arguments it will accept
 function displayAdditionQuestion(operand1, operand2){
