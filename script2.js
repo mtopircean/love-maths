@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded",function(){
             //you then collect the attibute and check the type of the content
             //if it is the submitt that is clicked, then it displays that message
             if (this.getAttribute("data-type") ==="submit"){
-                alert("You clicked Submit!");
+                checkAnswer();
             }else{
                 //if not submitt, otherwise, set the game type to the value of the attribute; data-type tells us what game type we want to run
                 let gameType=this.getAttribute("data-type");
@@ -51,12 +51,48 @@ function runGame(gameType){
     }
     }
 }
+/**
+ * Checks the answer against the first element in
+ * the returned calculateCorrectAnswer array
+ */
 
 function checkAnswer(){
-  
-}
+    let userAnswer= parseInt(document.getElementById("answer-box").value);
+    let calculatedAnswer = calculateCorrectAnswer();
+    let isCorrect = userAnswer === calculateCorrectAnswer[0];
+//if bellow sets automatically the if TRUE enviorement
+    if (isCorrect) {
+        alert" Hey! You got this right! :D");
+    }else{
+        alert('Awww.... you answered${userAnswer}. The correct answer was ${calculatedAnswer[0]}!');
+    }
 
+    runGame(calculatedAnswer[1]);
+
+    }
+}
+/**
+     * Gewts the operands (the numbers) and the operator (plus, minus, etc.)
+     * directly from the dom, and returns the correct answer.
+     */
 function calculateCorrectAnswer(){
+    //read values from DOM and store in variables
+    // So we're going to create one called operand1,  and we're going to get the inner text,  the value of the element with the ID of  operand 1 from our HTML. This is basically  a reverse of what we did before when we set the  values of operand 1, operand 2 and operator.
+    //.innerText: This property accesses the textual content within the selected element. It retrieves the inner text of the element retrieved in the previous step.
+    //By default, Java retrieves data from dom as string. parseInt(): This is a JavaScript function that takes a value as an argument and attempts to convert it into an integer (a whole number). In this case, the retrieved inner text is passed as the argument.
+    let operand1=parseInt(document.getElementById('operand1').innerText);
+    let operand2=parseInt(document.getElementById('operand2').innerText);
+    let operator=parseInt(document.getElementById('operator').innerText);
+
+    //if checks the operator and will calculate the right answer and will return an array
+    // addition here will continue to run the same game until user decides to stop
+    if (operator === "+"){
+        return[operand1 + operand2, "addition"];
+    }else{
+        alert('Unimplemented operator ${operator}');
+        throw 'Unimplemented operator ${operator}. Aborting!';
+    }
+    }
 
 }
 
