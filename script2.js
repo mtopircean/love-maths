@@ -24,19 +24,32 @@ document.addEventListener("DOMContentLoaded",function(){
                 //if not submitt, otherwise, set the game type to the value of the attribute; data-type tells us what game type we want to run
                 let gameType=this.getAttribute("data-type");
                 //Gives an allert on the game type you selected, which is basically what gameType variable tells you; tells basically the user what button was clicked
-                alert(`You clicked${gameType}`);
+                //alert(`You clicked${gameType}`); replaced with a function that calls the game
+                runGame(gameType);
             }
             }
         })
     }
-
+    //Runs addition game by default, starts as soon as the page is loaded. This sits outside of the for loop
+    runGame("addition")
 })
-
-function runGame(){
+//added gametype to determine the type of game the function will run. It will determine the parameters the function will accept.
+function runGame(gameType){
     //generates the first number of the game as a whole number(integer) between 0-25 and avoids 0 since we did a +1
     let num1=Math.floor(Math.random()*25)+1;
     //did the same for num2
     let num2=Math.floor(Math.random()*25)+1;
+
+    // checks which gametype you are running and call appropriate function to display the question
+    if (gameType === "addition") {
+        displayAdditionQuestion(num1, num2)
+        //alerts the user if the gametype is unknown
+    }else{
+        alert('Unknown game type:&{gameType}');
+        //throw statement will stop the console from running and will send a message to the console
+        throw 'Unknown game type: ${gameType}. Aborting!';
+    }
+    }
 }
 
 function checkAnswer(){
@@ -54,9 +67,12 @@ function incrementScore(){
 function incrementWrongAnswer(){
 
 }
-
-function displayAdditionQuestion(){
-
+//operand 1 and 2 are the 2 are the 2 arguments it will accept
+function displayAdditionQuestion(operand1, operand2){
+//get the element that feeds the operand 1 and 2 and also the operator
+document.getElementById('operand1').textContent= operand1;
+document.getElementById('operand2').textContent= operand2;
+document.getElementById('operator').textContent= "+";
 }
 
 function displaySubtractQuestion(){
