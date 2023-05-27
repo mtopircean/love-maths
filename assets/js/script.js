@@ -148,7 +148,7 @@ function displayDivisionQuestion(operand1, operand2) {
 // the function bellow allows me to understand what to do with the rest
     if (operand1 % operand2 !== 0) {
         // Adjust operand1 to be a multiple of operand2
-        operand1 = Math.floor(operand1 / operand2) * operand2;
+        operand1 = Math.floor(operand1 * operand2);
     }
 
     document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
