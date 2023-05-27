@@ -30,11 +30,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         })
     }
+// in order for the user to be able to submitt the answer by pressing enter and not needing to click the submit. you need an event listener
+document.getElementById("answer-box").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        checkAnswer();
+    }
+})
+
 //Runs addition game by default, starts as soon as the page is loaded. This sits outside of the for loop
 runGame("addition")
 })
 //added gametype to determine the type of game the function will run. It will determine the parameters the function will accept.
 function runGame(gameType) {
+    //every time the runGame function is called will set the value of the answer box to an empty one
+    document.getElementById("answer-box").value = "";
+
+    //set the focus, makes sure the cursor is in the answer box as soon as the page is loaded
+    document.getElementById("answer-box").focus();
+
     //generates the first number of the game as a whole number(integer) between 0-25 and avoids 0 since we did a +1
     let num1 = Math.floor(Math.random() * 25) + 1;
     //did the same for num2
