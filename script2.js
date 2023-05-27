@@ -65,6 +65,10 @@ function runGame(gameType) {
     } else if (gameType === "subtract") {
         displaySubtractQuestion(num1, num2)
 
+    } else if {
+
+        displaySubtractQuestion(num1, num2)
+
     } else {
         alert('Unknown game type:&{gameType}');
         //throw statement will stop the console from running and will send a message to the console
